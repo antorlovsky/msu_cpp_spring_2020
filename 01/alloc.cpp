@@ -31,5 +31,5 @@ void finalize()
 {
     usedMemory = 0;
     allMemory = 0;
-    free(pointer);
+    delete[] pointer;
 }
