@@ -7,8 +7,11 @@ static size_t allMemory = 0;
 
 void makeAllocator(size_t maxSize)
 {
-    pointer = new char[maxSize];
-    allMemory = maxSize;
+    pointer = new (std::nothrow) char[maxSize];
+    if (pointer == nullptr)
+        std::cout << "Error: can't allocate memory!";
+    else
+        allMemory = maxSize;
 }
 
 char* alloc(size_t size)

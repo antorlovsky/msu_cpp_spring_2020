@@ -78,6 +78,14 @@ void testValue()
     finalize();
 }
 
+void testError()
+{
+    makeAllocator(-1);
+    char* test0 = alloc(5);
+
+    assert(test0 == nullptr);
+}
+
 int main()
 {
     testZero();
@@ -87,6 +95,7 @@ int main()
     testRunOut();
     testReset();
     testValue();
+    testError();
 
     return 0;
 }
