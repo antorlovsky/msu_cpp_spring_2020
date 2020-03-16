@@ -1,10 +1,5 @@
 #include "parser.h"
 
-using OnNumber = void (*)(const char* number);
-using OnString = void (*)(const char* string);
-using OnBegin = void (*)();
-using OnEnd = void (*)();
-
 OnNumber numberHandler = nullptr;
 OnString stringHandler = nullptr;
 OnBegin beginHandler = nullptr;
