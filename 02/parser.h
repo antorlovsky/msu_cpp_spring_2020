@@ -1,7 +1,7 @@
 #pragma once
 #include "iostream"
 
-using OnNumber = void (*)(const char* number);
+using OnNumber = void (*)(int number);
 using OnString = void (*)(const char* string);
 using OnBegin = void (*)();
 using OnEnd = void (*)();

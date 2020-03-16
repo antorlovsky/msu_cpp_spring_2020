@@ -1,4 +1,5 @@
 #include "parser.h"
+#include "stdlib.h"
 
 OnNumber numberHandler = nullptr;
 OnString stringHandler = nullptr;
@@ -65,7 +66,7 @@ void parse(const char* text)
             if (isNumber)
             {
                 if (numberHandler)
-                    numberHandler(arg.c_str());
+                    numberHandler(atoi(arg.c_str()));
                 isNumber = false;
             }
             else if (isString)
@@ -83,7 +84,7 @@ void parse(const char* text)
     if (isNumber)
     {
         if (numberHandler)
-            numberHandler(arg.c_str());
+            numberHandler(atoi(arg.c_str()));
         isNumber = false;
     }
     else if (isString)

@@ -15,7 +15,7 @@ void onBegin()
     ++beginCount;
 }
 
-void onNumberFound(const char* n)
+void onNumberFound(int n)
 {
     ++numCount;
 }
