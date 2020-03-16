@@ -33,7 +33,7 @@ void register_on_end_callback(OnEnd callback)
 
 void parse(const char* text)
 {
-    int startPos = 0, endPos = 0, curPos = -1;
+    size_t startPos = 0, endPos = 0, curPos = 0;
     bool isNumber = false, isString = false;
     char curElem;
     std::string arg;
@@ -41,7 +41,7 @@ void parse(const char* text)
     if (beginHandler)
         beginHandler();
 
-    while (*text++)
+    while (*(text++))
     {
         curElem = *(text - 1);
         if (curElem >= '0' && curElem <= '9')
