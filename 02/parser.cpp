@@ -26,13 +26,30 @@ void register_on_end_callback(OnEnd callback)
     endHandler = callback;
 }
 
+void onFoundElement(bool& isNumber, bool& isString, const char* text, size_t start, size_t length)
+{
+    std::string arg;
+
+    arg = std::string(text + start, length);
+    if (isNumber)
+    {
+        if (numberHandler)
+            numberHandler(atoi(arg.c_str()));
+        isNumber = false;
+    }
+    else if (isString)
+    {
+        if (stringHandler)
+            stringHandler(arg.c_str());
+        isString = false;
+    }
+}
 
 void parse(const char* text)
 {
     size_t startPos = 0, endPos = 0, curPos = 0;
     bool isNumber = false, isString = false;
     char curElem;
-    std::string arg;
 
     if (beginHandler)
         beginHandler();
@@ -62,38 +79,13 @@ void parse(const char* text)
         }
         else
         {
-            arg = std::string(text - curPos - 1 + startPos, endPos - startPos + 1);
-            if (isNumber)
-            {
-                if (numberHandler)
-                    numberHandler(atoi(arg.c_str()));
-                isNumber = false;
-            }
-            else if (isString)
-            {
-                if (stringHandler)
-                    stringHandler(arg.c_str());
-                isString = false;
-            }
+            onFoundElement(isNumber, isString, text, startPos - curPos - 1, endPos - startPos + 1);
         }
         ++curPos;
     }
 
-    arg = std::string(text - curPos - 1 + startPos, endPos - startPos + 1);
+    onFoundElement(isNumber, isString, text, startPos - curPos - 1, endPos - startPos + 1);
 
-    if (isNumber)
-    {
-        if (numberHandler)
-            numberHandler(atoi(arg.c_str()));
-        isNumber = false;
-    }
-    else if (isString)
-    {
-        if (stringHandler)
-            stringHandler(arg.c_str());
-        isString = false;
-    }
-
-    if(endHandler)
+    if (endHandler)
         endHandler();
 }
