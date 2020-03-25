@@ -54,16 +54,14 @@ int& Matrix::Row::operator[](const size_t col)
         throw std::out_of_range("col");
 }
 
-Matrix Matrix::operator*=(const int& number)
+Matrix& Matrix::operator*=(const int number)
 {
-    size_t colNum = getColumns();
-    Matrix tmp(getRows(), colNum);
-
     for (int i = 0; i < rowNum; ++i)
-        for (int j = 0; j < colNum; ++j)
-            tmp[i][j] = rows[i]->cols[j] *= number;
+        for (int j = 0; j < getColumns(); ++j)
+            rows[i]->cols[j] *= number;
 
-    return tmp;
+    Matrix& res = *this;
+    return res;
 }
 
 bool Matrix::operator==(const Matrix& other) const
