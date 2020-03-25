@@ -38,7 +38,7 @@ const size_t Matrix::getColumns() const
     return rows[0]->colNum;
 }
 
-Matrix::Row& Matrix::operator[](size_t row) const
+Matrix::Row& Matrix::operator[](size_t row)
 {
     if (row < rowNum)
         return *rows[row];
@@ -75,7 +75,7 @@ bool Matrix::operator==(const Matrix& other) const
     {
         for (int j = 0; j < colNum; ++j)
         {
-            if (rows[i]->cols[j] != other[i][j])
+            if (rows[i]->cols[j] != other.rows[i]->cols[j])
                 return false;
         }
     }

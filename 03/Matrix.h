@@ -20,7 +20,7 @@ public:
     const size_t getRows();
     const size_t getColumns() const;
 
-    Row& operator[](const size_t) const;
+    Row& operator[](const size_t);
     Matrix operator*=(const int&);
     bool operator==(const Matrix&) const;
     bool operator!=(const Matrix&) const;
