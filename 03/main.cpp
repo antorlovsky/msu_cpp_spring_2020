@@ -23,7 +23,7 @@ void testOutRange()
     {
         double x = m[3][0];
     }
-    catch(std::out_of_range e)
+    catch(const std::out_of_range& e)
     {
         assert(e.what() == std::string("row"));
     }
