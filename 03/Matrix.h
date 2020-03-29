@@ -11,7 +11,7 @@ public:
         ~Row();
         const size_t colNum;
 
-        int& operator[](const size_t);
+        int& operator[](const size_t) const;
         int* cols;
     };
 
@@ -20,7 +20,7 @@ public:
     const size_t getRows();
     const size_t getColumns() const;
 
-    Row& operator[](const size_t);
+    Row& operator[](const size_t) const;
     Matrix& operator*=(const int);
     bool operator==(const Matrix&) const;
     bool operator!=(const Matrix&) const;

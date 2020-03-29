@@ -38,7 +38,7 @@ const size_t Matrix::getColumns() const
     return rows[0]->colNum;
 }
 
-Matrix::Row& Matrix::operator[](size_t row)
+Matrix::Row& Matrix::operator[](size_t row) const
 {
     if (row < rowNum)
         return *rows[row];
@@ -46,7 +46,7 @@ Matrix::Row& Matrix::operator[](size_t row)
         throw std::out_of_range("row");
 }
 
-int& Matrix::Row::operator[](const size_t col)
+int& Matrix::Row::operator[](const size_t col) const
 {
     if (col < colNum)
         return cols[col];
