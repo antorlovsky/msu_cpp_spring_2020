@@ -69,6 +69,9 @@ bool Matrix::operator==(const Matrix& other) const
     bool res;
     const size_t colNum = getColumns();
 
+    if (rowNum != other.rowNum || colNum != other.getColumns())
+        return false;
+
     for (int i = 0; i < rowNum; ++i)
     {
         for (int j = 0; j < colNum; ++j)
