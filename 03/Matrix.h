@@ -18,7 +18,7 @@ public:
 
     Matrix(const size_t, const size_t);
     ~Matrix();
-    const size_t getRows();
+    const size_t getRows() const;
     const size_t getColumns() const;
 
     Row& operator[](const size_t);

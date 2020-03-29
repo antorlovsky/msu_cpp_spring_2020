@@ -26,7 +26,7 @@ Matrix::Row::~Row()
     delete[] cols;
 }
 
-const size_t Matrix::getRows()
+const size_t Matrix::getRows() const
 {
     return rowNum;
 }
