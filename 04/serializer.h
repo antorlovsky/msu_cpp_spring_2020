@@ -23,9 +23,9 @@ public:
     }
 
     template <class... ArgsT>
-    Error operator()(ArgsT... args)
+    Error operator()(ArgsT&&... args)
     {
-        return process(args...);
+        return process(std::forward<ArgsT>(args)...);
     }
 
 private:
@@ -51,16 +51,16 @@ private:
     template <class T>
     Error process(T&& val)
     {
-        return save(val);
+        return save(std::forward<T>(val));
     }
 
     template <class T, class... Args>
     Error process(T&& val, Args&&... args)
     {
-        Error error = save(val);
+        Error error = save(std::forward<T>(val));
 
         if (error == Error::NoError)
-            return process(args...);
+            return process(std::forward<Args>(args)...);
         else
             return error;
     }
@@ -83,7 +83,7 @@ public:
     template <class... ArgsT>
     Error operator()(ArgsT&&... args)
     {
-        return process(args...);
+        return process(std::forward<ArgsT>(args)...);
     }
 
 private:
@@ -128,16 +128,16 @@ private:
     template <class T>
     Error process(T&& val)
     {
-        return load(val);
+        return load(std::forward<T>(val));
     }
 
     template <class T, class... Args>
     Error process(T&& val, Args&&... args)
     {
-        Error error = load(val);
+        Error error = load(std::forward<T>(val));
 
         if (error == Error::NoError)
-            return process(args...);
+            return process(std::forward<Args>(args)...);
         else
             return error;
     }
