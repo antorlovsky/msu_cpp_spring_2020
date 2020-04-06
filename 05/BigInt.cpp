@@ -99,11 +99,17 @@ BigInt BigInt::operator-() const
 
 BigInt BigInt::operator+(const BigInt& other) const
 {
-    if (sign) {
-        if (other.sign) return -(-*this + (-other));
-        else return (other - (-*this));
+    if (sign)
+    {
+        if (other.sign)
+            return -(-*this + (-other));
+        else
+            return (other - (-*this));
     }
-    else if (other.sign) return (*this - (-other));
+    else if (other.sign)
+    {
+        return (*this - (-other));
+    }
 
     size_t maxSize = std::max(size, other.size);
     BigInt tmp;
@@ -141,10 +147,12 @@ BigInt BigInt::operator+(const BigInt& other) const
 
 BigInt BigInt::operator-(const BigInt& other) const
 {
-
-    if (other.sign) return *this + (-other);
-    else if (sign) return -(-*this + other);
-    else if (*this < other) return -(other - *this);
+    if (other.sign)
+        return *this + (-other);
+    else if (sign)
+        return -(-*this + other);
+    else if (*this < other)
+        return -(other - *this);
 
     BigInt tmp;
     tmp.updateSize(size);
