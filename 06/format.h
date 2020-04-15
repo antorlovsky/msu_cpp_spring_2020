@@ -6,7 +6,7 @@
 class Format
 {
 public:
-    Format(const std::string str) : argNum(0), pattern(str) {}
+    Format(const std::string& str) : argNum(0), pattern(str) {}
 
     void addArguments() {}
 
@@ -79,7 +79,7 @@ private:
 };
 
 template <class... ArgsT>
-std::string format(const std::string str, ArgsT&&... args)
+std::string format(const std::string& str, ArgsT&&... args)
 {
     Format format(str);
     format.addArguments(std::forward<ArgsT>(args)...);
