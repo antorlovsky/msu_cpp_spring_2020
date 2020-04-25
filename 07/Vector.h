@@ -189,7 +189,7 @@ public:
             capacity_ *= 2;
         }
 
-        ptr_[size_++] = value;
+        ptr_[size_++] = std::move(value);
     }
 
     void push_back(const value_type& value)
