@@ -30,7 +30,7 @@ public:
         new (ptr) value_type();
     }
 
-    void construct(pointer ptr, value_type val)
+    void construct(pointer ptr, value_type& val)
     {
         new (ptr) value_type(val);
     }
