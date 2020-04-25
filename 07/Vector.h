@@ -171,7 +171,7 @@ public:
         return ptr_[pos];
     }
 
-    constexpr const_reference operator[](size_type pos) const
+    const_reference operator[](size_type pos) const
     {
         return ptr_[pos];
     }
@@ -217,17 +217,17 @@ public:
         --size_;
     }
 
-    constexpr bool empty() const noexcept
+    bool empty() const noexcept
     {
         return size_ == 0;
     }
 
-    constexpr size_type size() const noexcept
+    size_type size() const noexcept
     {
         return size_;
     }
 
-    constexpr size_type capacity() const noexcept
+    size_type capacity() const noexcept
     {
         return capacity_;
     }
