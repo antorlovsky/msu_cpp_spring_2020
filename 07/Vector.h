@@ -25,14 +25,10 @@ public:
             std::free(ptr);
     }
 
-    void construct(pointer ptr)
+    template<class... Args>
+    void construct(pointer ptr, Args&&... args)
     {
-        new (ptr) value_type();
-    }
-
-    void construct(pointer ptr, value_type& val)
-    {
-        new (ptr) value_type(val);
+        ::new ((void*)ptr) value_type(std::forward<Args>(args)...);
     }
 
     void destroy(pointer ptr)
