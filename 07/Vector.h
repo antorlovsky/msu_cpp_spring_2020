@@ -185,7 +185,7 @@ public:
             capacity_ *= 2;
         }
 
-        ptr_[size_++] = std::move(value);
+        alloc_.construct(ptr_ + size_++, std::move(value));
     }
 
     void push_back(const value_type& value)
@@ -201,7 +201,7 @@ public:
             capacity_ *= 2;
         }
 
-        ptr_[size_++] = value;
+        alloc_.construct(ptr_ + size_++, value);
     }
 
     void pop_back()
