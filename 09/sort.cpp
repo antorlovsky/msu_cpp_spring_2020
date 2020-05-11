@@ -63,7 +63,7 @@ void BinarySort::sortChunks(valueType* chunk)
         }
 
         if (chunkSize == 0)
-            return false;
+            return;
 
         std::sort(chunk, chunk + chunkSize / valueSize);
 
@@ -78,8 +78,6 @@ void BinarySort::sortChunks(valueType* chunk)
             sortedChunks.push(chunkName);
         }
     }
-
-    return true;
 }
 
 bool BinarySort::mergeChunks(valueType* chunk)
