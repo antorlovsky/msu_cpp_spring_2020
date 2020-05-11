@@ -31,7 +31,7 @@ public:
     BinarySort(const char* name, size_t threadNum);
     ~BinarySort();
 
-    bool sortChunks(valueType* chunk);
+    void sortChunks(valueType* chunk);
     bool mergeChunks(valueType* chunk);
     std::string generateFilename();
 };

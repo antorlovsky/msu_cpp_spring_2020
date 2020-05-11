@@ -50,7 +50,7 @@ BinarySort::~BinarySort()
     delete[] memory;
 }
 
-bool BinarySort::sortChunks(valueType* chunk)
+void BinarySort::sortChunks(valueType* chunk)
 {
     while (!file.eof())
     {
