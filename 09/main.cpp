@@ -24,7 +24,7 @@ void testSorting()
     std::ifstream output("output.txt", std::ios::in | std::ios::binary);
 
     int n = 0;
-    uint64_t prev = -0xFFFFFFFFFFFFFFFF, next = 0;
+    uint64_t prev = 0, next = 0;
 
     while(!output.read(reinterpret_cast<char*>(&next), sizeof(uint64_t)).eof())
     {
