@@ -16,5 +16,6 @@ test: sort
 
 remove:
 	rm -rf *.txt
+
 clean:
 	rm -rf *.o sort
