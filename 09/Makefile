@@ -14,5 +14,7 @@ sort.o: sort.cpp sort.h
 test: sort
 	./sort
 
+remove:
+	rm -rf *.txt
 clean:
-	rm -rf *.o *.txt sort
+	rm -rf *.o sort
