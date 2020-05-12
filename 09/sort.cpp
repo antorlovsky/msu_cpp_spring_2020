@@ -15,7 +15,12 @@ BinarySort::BinarySort(const char* name, size_t threadNum):
         threads.emplace_back(
                 [this, i]
                 {
-                    this->sortChunks(this->memory + i * this->availableSize);
+                    if (i % 2 == 0)
+                    {
+                        ++this->workingThreadsCount;
+                        this->sortChunks(this->memory + i * this->availableSize);
+                        --this->workingThreadsCount;
+                    }
 
                     while (this->mergeChunks(this->memory + i * this->availableSize)) {};
 
